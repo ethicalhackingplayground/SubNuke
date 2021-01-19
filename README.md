@@ -3,6 +3,34 @@ Subdomain Takeover tool with web UI
 <br>
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+# Install
+
+```bash
+chmod +x install.sh ; ./install.sh
+```
+
+```bash
+python app.py
+```
+
+# Tools used
+
+* Chaos
+* Subfinder
+* Crobat
+* dnsgen
+* metabigor
+* masscan
+* subtake
+
+# Features
+
+* File upload option to run scans against multiple.
+  
+* Run scans against a single domain.
+
+**Feel free to change the bash scripts to implement more recon techniques**
+
 
 # Video
 [![(Watch Video)](https://i.imgur.com/8ya5vAs.png)](https://www.youtube.com/watch?v=pYewle2HcTw&ab_channel=krypt0muxbugbounty)
