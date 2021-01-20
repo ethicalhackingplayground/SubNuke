@@ -10,7 +10,7 @@ chmod +x install.sh ; ./install.sh
 ```
 
 ```bash
-python app.py
+python3 app.py
 ```
 
 # Tools used
