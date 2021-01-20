@@ -31,6 +31,12 @@ python3 app.py
 
 **Feel free to change the bash scripts to implement more recon techniques**
 
+### Menu
+![Img](subnuke.PNG)
+
+### Scan
+![Img](subnuke1.PNG)
+
 
 # Video
 [![(Watch Video)](https://i.imgur.com/8ya5vAs.png)](https://www.youtube.com/watch?v=pYewle2HcTw&ab_channel=krypt0muxbugbounty)
