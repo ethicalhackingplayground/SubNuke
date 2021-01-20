@@ -29,7 +29,7 @@ python3 app.py
   
 * Run scans against a single domain.
 
-### Contributors
+# Contributors
 <a href="https://github.com/ethicalhackingplayground/SubNuke/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=ethicalhackingplayground/SubNuke" />
 </a>
