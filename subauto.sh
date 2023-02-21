@@ -33,7 +33,10 @@ find "chaos_domains" -name "*.zip" | xargs -I@ bash -c '{ cat @ | tee -a domains
 cat hosts.txt | xargs -I @ -P 10 bash -c '{ crobat -s "@" | tee -a domains.txt ; }' 
 
 # Use amass to find subdomains
-amass enum -passive -df hosts.txt | tee -a domains.txt
+amass enum -passive -df hosts.txt | anew domains.txt
+
+# Use amass to do an active subdomain enumeration
+amass enum -active -df hosts.tx | anew domains.txt
 
 # DNS GEN Scan
 cat domains.txt | dnsgen - | tee -a domains.txt
