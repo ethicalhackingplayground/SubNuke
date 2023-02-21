@@ -26,24 +26,20 @@ sudo apt-get install -y mariadb-server
 # Install all the tools
 git clone https://github.com/robertdavidgraham/masscan
 cd masscan; make -j ; cd ..
-wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
-tar -xvf go1.13.4.linux-amd64.tar.gz
+wget https://dl.google.com/go/go1.19.6.linux-amd64.tar.gz
+tar -xvf go1.19.6.linux-amd64.tar.gz
 mv go /usr/local
 GOROOT=/usr/local/go
 GOPATH=$HOME/go
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 git clone https://github.com/blechschmidt/massdns.git
 cd massdns ; make all ; cd ..
-wget https://github.com/projectdiscovery/subfinder/releases/download/v2.4.5/subfinder_2.4.5_linux_amd64.tar.gz
-tar -xzvf subfinder_2.4.5_linux_amd64.tar.gz
-mv subfinder  /usr/local/bin
-go get github.com/cgboal/sonarsearch/crobat
+go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+go install -v github.com/cgboal/sonarsearch/crobat@latest
 git clone https://github.com/jakejarvis/subtake.git
-go get github.com/jakejarvis/subtake
-wget https://github.com/OWASP/Amass/releases/download/v3.10.5/amass_linux_amd64.zip
-unzip amass_linux_amd64.zip
-cp amass_linux_amd64/amass /bin
-go get -u github.com/j3ssie/metabigor
+go install -v github.com/jakejarvis/subtake@latest
+go install -v github.com/OWASP/Amass/v3/...@master
+go install -v github.com/j3ssie/metabigor@maste
 
 # Install the requirments
 pip3 install -r requirements.txt
