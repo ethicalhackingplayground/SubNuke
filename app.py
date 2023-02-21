@@ -1,4 +1,4 @@
-#!/usr/bin/pyton
+#!/usr/bin/python
 # encoding: utf-8
 from flask import Flask
 from flask import render_template, redirect, url_for, request
