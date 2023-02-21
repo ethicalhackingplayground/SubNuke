@@ -44,6 +44,7 @@ unzip findomain-linux-i386.zip
 chmod +x findomain
 sudo mv findomain /usr/bin/findomain
 
+go install -v github.com/tomnomnom/anew@latest
 go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 go install -v github.com/cgboal/sonarsearch/crobat@latest
 git clone https://github.com/jakejarvis/subtake.git
