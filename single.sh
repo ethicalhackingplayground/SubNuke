@@ -33,21 +33,29 @@ cd chaos_domains; unzip $org.zip ; cd ../
 find "chaos_domains" -name "*.txt" | xargs -I@ bash -c '{ cat @ | tee -a domains.txt ; }'
 
 # Use Subfinder to find subdomains
-subfinder -d $DOMAIN -silent | tee -a domains.txt
+subfinder -d $DOMAIN -silent -all | amass enum -passive -d $DOMAIN | anew domains.txt
+ domains.txt
 
 # Use amass to find subdomains
-amass enum -passive -d $DOMAIN | tee -a domains.txt
+amass enum -passive -d $DOMAIN | anew domains.txt
+
+# Use amass to do an active subdomain enumeration
+amass enum -active -d $DOMAIN | anew domains.txt
+
+# findomain
+findomain --output --quiet --target $DOMAIN 
+cat $DOMAIN.txt | anew domains.txt
 
 # DNS GEN Scan
-cat domains.txt | dnsgen - | tee -a domains.txt
+cat domains.txt | dnsgen - | anew domains.txt
 
 # Use crobat to get subdomains from rapid7
-crobat -s $DOMAIN | tee -a domains.txt 
-cat domains.txt | xargs -I@ bash -c '{ crobat -s "@" | tee -a domains.txt ; }'
+#crobat -s $DOMAIN | tee -a domains.txt 
+#cat domains.txt | xargs -I@ bash -c '{ crobat -s "@" | anew domains.txt ; }'
 
 # Get ASN's
 
-amass intel -org $org | awk '{print $1}' | sed 's/\,$//' | tee -a asn_list
+amass intel -org $org | awk '{print $1}' | sed 's/\,$//' | anew asn_list
 cat asn_list | metabigor net --asn -o ranges.txt
 
 # Use masscan to get IP's
