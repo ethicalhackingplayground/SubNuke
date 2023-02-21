@@ -28,7 +28,7 @@ git clone https://github.com/robertdavidgraham/masscan
 cd masscan; make -j ; cd ..
 wget https://dl.google.com/go/go1.19.6.linux-amd64.tar.gz
 tar -xvf go1.19.6.linux-amd64.tar.gz
-mv go /usr/local
+sudo mv go /usr/local
 GOROOT=/usr/local/go
 GOPATH=$HOME/go
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
