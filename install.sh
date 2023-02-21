@@ -42,7 +42,7 @@ go install -v github.com/OWASP/Amass/v3/...@master
 go install -v github.com/j3ssie/metabigor@maste
 
 # Install the requirments
-pip3 install -r $(pwd)/requirements.txt
+pip3 install -r $(pwd)/../requirements.txt
 }
 
 install
