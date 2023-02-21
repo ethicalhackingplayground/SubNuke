@@ -34,7 +34,6 @@ find "chaos_domains" -name "*.txt" | xargs -I@ bash -c '{ cat @ | tee -a domains
 
 # Use Subfinder to find subdomains
 subfinder -d $DOMAIN -silent -all | amass enum -passive -d $DOMAIN | anew domains.txt
- domains.txt
 
 # Use amass to find subdomains
 amass enum -passive -d $DOMAIN | anew domains.txt
