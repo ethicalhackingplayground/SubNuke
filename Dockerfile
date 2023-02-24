@@ -43,7 +43,6 @@ RUN sudo mv findomain /usr/bin/findomain
 
 RUN go install -v github.com/tomnomnom/anew@latest
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
-RUN go install -v github.com/cgboal/sonarsearch/crobat@latest
 RUN git clone https://github.com/jakejarvis/subtake.git
 RUN go install -v github.com/jakejarvis/subtake@latest
 RUN go install -v github.com/OWASP/Amass/v3/...@master
