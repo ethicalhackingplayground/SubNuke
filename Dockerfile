@@ -22,8 +22,8 @@ COPY . /app
 RUN wget https://dl.google.com/go/go1.19.6.linux-amd64.tar.gz
 RUN tar -xvf go1.19.6.linux-amd64.tar.gz
 RUN sudo mv go /usr/local
-RUN GOROOT=/usr/local/go
-RUN GOPATH=$HOME/go
+ENV GOROOT=/usr/local/go
+ENV GOPATH=$HOME/go
 ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 # Install all the tools
