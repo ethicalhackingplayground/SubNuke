@@ -26,12 +26,6 @@ sudo apt-get install -y mariadb-server
 # Install all the tools
 git clone https://github.com/robertdavidgraham/masscan
 cd masscan; make -j ; cd ..
-wget https://dl.google.com/go/go1.19.6.linux-amd64.tar.gz
-tar -xvf go1.19.6.linux-amd64.tar.gz
-sudo mv go /usr/local
-GOROOT=/usr/local/go
-GOPATH=$HOME/go
-PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 git clone https://github.com/blechschmidt/massdns.git
 cd massdns ; make all ; cd ..
 

@@ -10,7 +10,7 @@ RUN apt-get update && \
     apt-get install -y snapd && \
     apt-get install -y curl && \
     apt-get install -y unzip && \
-    apt-get install -y git gcc make libpcap-dev
+    apt-get install -y git gcc make libpcap-dev sudo
 
 # The working directory where the app will live.
 WORKDIR /app
@@ -19,9 +19,12 @@ WORKDIR /app
 COPY . /app
 
 # Install all the tools
-COPY install.sh .
-RUN chmod +x install.sh ; ./install.sh
-
+RUN wget https://dl.google.com/go/go1.19.6.linux-amd64.tar.gz
+RUN tar -xvf go1.19.6.linux-amd64.tar.gz
+RUN sudo mv go /usr/local
+RUN GOROOT=/usr/local/go
+RUN GOPATH=$HOME/go
+ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 # Install the requirments
 RUN pip3 install -r $(pwd)/../requirements.txt
 
