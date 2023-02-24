@@ -21,6 +21,10 @@ mkdir -p chaos_domains
 
 # The single domain
 DOMAIN=$1
+if [[ -z "$DOMAIN" ]] ; then
+    echo "Usage: $0 <Domain>"
+    exit 1;
+fi
 
 
 # Get all chaos domains
@@ -33,7 +37,7 @@ cd chaos_domains; unzip $org.zip ; cd ../
 find "chaos_domains" -name "*.txt" | xargs -I@ bash -c '{ cat @ | tee -a domains.txt ; }'
 
 # Use Subfinder to find subdomains
-subfinder -d $DOMAIN -silent -all | amass enum -passive -d $DOMAIN | anew domains.txt
+subfinder -d $DOMAIN -silent -all | anew domains.txt
 
 # Use amass to find subdomains
 amass enum -passive -d $DOMAIN | anew domains.txt
