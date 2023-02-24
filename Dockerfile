@@ -26,7 +26,7 @@ RUN GOROOT=/usr/local/go
 RUN GOPATH=$HOME/go
 ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 # Install the requirments
-RUN pip3 install -r $(pwd)/../requirements.txt
+RUN pip3 install -r $(pwd)/requirements.txt
 
 # Declare environment variables
 ENV FLASK_APP="app.py"
