@@ -19,29 +19,11 @@ WORKDIR /app
 COPY . /app
 
 # Install all the tools
-RUN git clone https://github.com/robertdavidgraham/masscan
-RUN cd masscan; make -j ; cd ..
-RUN wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
-RUN tar -xvf go1.13.4.linux-amd64.tar.gz
-RUN mv go /usr/local
-ENV GOROOT=/usr/local/go
-ENV GOPATH=$HOME/go
-ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
-RUN git clone https://github.com/blechschmidt/massdns.git
-RUN cd massdns ; make all ; cd ..
-RUN wget https://github.com/projectdiscovery/subfinder/releases/download/v2.4.5/subfinder_2.4.5_linux_amd64.tar.gz
-RUN tar -xzvf subfinder_2.4.5_linux_amd64.tar.gz
-RUN mv subfinder  /usr/local/bin
-RUN go get github.com/cgboal/sonarsearch/crobat
-RUN git clone https://github.com/jakejarvis/subtake.git
-RUN go get github.com/jakejarvis/subtake
-RUN wget https://github.com/OWASP/Amass/releases/download/v3.10.5/amass_linux_amd64.zip
-RUN unzip amass_linux_amd64.zip
-RUN cp amass_linux_amd64/amass /bin
-RUN go get -u github.com/j3ssie/metabigor
+COPY install.sh .
+RUN chmod +x install.sh ; ./install.sh
 
 # Install the requirments
-RUN pip3 install -r requirements.txt 
+RUN pip3 install -r $(pwd)/../requirements.txt
 
 # Declare environment variables
 ENV FLASK_APP="app.py"
