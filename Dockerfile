@@ -25,6 +25,31 @@ RUN sudo mv go /usr/local
 RUN GOROOT=/usr/local/go
 RUN GOPATH=$HOME/go
 ENV PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+# Install all the tools
+RUN git clone https://github.com/robertdavidgraham/masscan
+RUN cd masscan; make -j ; cd ..
+RUN git clone https://github.com/blechschmidt/massdns.git
+RUN cd massdns ; make all ; cd ..
+
+RUN wget https://github.com/tomnomnom/assetfinder/releases/download/v0.1.1/assetfinder-linux-amd64-0.1.1.tgz
+RUN tar -xvf assetfinder-linux-amd64-0.1.1.tgz
+RUN mv assetfinder /bin ; chmod +x /bin/assetfinder
+
+RUN curl -LO https://github.com/findomain/findomain/releases/latest/download/findomain-linux-i386.zip
+RUN unzip findomain-linux-i386.zip
+RUN chmod +x findomain
+RUN sudo mv findomain /usr/bin/findomain
+
+RUN go install -v github.com/tomnomnom/anew@latest
+RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+RUN go install -v github.com/cgboal/sonarsearch/crobat@latest
+RUN git clone https://github.com/jakejarvis/subtake.git
+RUN go install -v github.com/jakejarvis/subtake@latest
+RUN go install -v github.com/OWASP/Amass/v3/...@master
+RUN go install -v github.com/j3ssie/metabigor@maste
+
+
 # Install the requirments
 RUN pip3 install -r $(pwd)/requirements.txt
 
